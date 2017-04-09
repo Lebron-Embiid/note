@@ -1,0 +1,9 @@
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="224" height="125" title="flash">
+                    <param name="movie" value="js/flash.swf" />
+                    <param name="allowscriptaccess" value="always">
+                    <param name="scale" value="noscale">
+                    <param name="allowFullScreen" value="true">
+                    <param name="quality" value="high" />
+                    <param name="wmode" value="transparent">
+                    <embed type="application/x-shockwave-flash" src="js/flash.swf" width="224" height="125" wmode="transparent" scale="noscale" id="flashplayer" name="flashplayer" quality="high" allowscriptaccess="always" allowfullscreen="true"></embed>
+                </object>

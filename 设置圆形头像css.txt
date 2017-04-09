@@ -1,0 +1,32 @@
+#header{
+    margin:10px 5px;
+    overflow:hidden;
+}
+#header figure div{
+    display:inline-block;
+    margin:5px auto;
+    width:100px;
+    height:100px;
+    border-radius:100px;
+    border:2px solid #fff;
+    overflow:hidden;
+    -webkit-box-shadow:0 0 3px #ccc;
+    box-shadow:0 0 3px #ccc;
+}
+#header img{
+    width:100%;
+    min-height:100%;
+    text-align:center;
+}
+
+
+
+
+/*html*/
+<header id="header">
+        <figure>
+            <div>
+                <img src="img/logo.jpg" />
+            </div>
+        </figure>
+    </header>

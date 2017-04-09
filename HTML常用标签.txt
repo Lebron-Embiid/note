@@ -1,0 +1,85 @@
+position : absolute;	--绝对定位（如果父元素没有定位，脱离文档流，不会单独占满一行，相对于body；反之，相对于最近的父元素）
+position : relative;    --相对定位（不脱离文档流，单独占满一行）
+position : fixed;       --固定定位（始终脱离文档流，相对于body）
+position : static;      --默认定位（不会受top.left.right.bottom影响）
+
+background: -webkit-gradient(linear,left top,left bottom, from(red), to(blue));    --渐变
+
+background: red url("") no-repeat;		--设置背景图片
+
+background-position: 0% 0%(默认值);  如果您仅规定了一个关键词，那么第二个值将是"center"。第一个值是水平位置，第二个值是垂直位置。
+
+text-shadow:5px(x轴) 5px(y轴) 10px(模糊程度) #color(颜色);    --文字阴影
+
+box-shadow:5px 5px 10px #color;                               --盒阴影
+
+z-index属性指定了一个元素的堆叠顺序（哪个元素应该放在前面，或后面）
+
+white space:nowrap;          (一行文字中，溢出部分不换行)
+
+outline:medium;		     --去掉输入框外边框
+
+opacity:0;                   --透明度
+
+cursor:pointer;              --鼠标触摸变成小手
+
+vertical-align: top;	     --向上对齐
+
+border-radius:1em;           --圆角半径
+
+box-sizing:border-box;       --背景border外部分被裁剪
+
+overflow:hidden			(隐藏文字溢出部分);overflow:auto(超出部分出现滚动条);
+
+text-overflow:ellipsis;	       （文字溢出部分将用...代替）
+
+text-indent:10px;		--字符缩进
+
+display:inline-block;           --可以将2个div元素并列显示
+
+transform:rotate(360deg);--角度 scale(x deg,y deg)(缩放倍数); skew(x deg,y deg)(倾斜值); translate(x px,y px)(移动)
+
+transition:background(背景) 1s(所用时间) linear(匀速) 0s(延迟);--
+
+animations 功能使用方法:
+@-webkit-keyframes id{
+	0%{
+		background(背景) 1s(所用时间) linear(匀速) infinite(循环)
+	}
+	50%{
+		background(背景) 1s(所用时间) linear(匀速) infinite(循环)
+	}
+	100%{
+		background(背景) 1s(所用时间) linear(匀速) infinite(循环)
+	}
+}
+
+first-line（第一行） , first-letter（第一个字）
+placeholder="请输入内容"   //文本框默认内容
+:before / :after{ content:counter(计数器名称) }    -- 向前/向后插入指定编号
+counter-increment: 计数器名称;
+
+first-child , last-child , nth-child（正数） , nth-last-child（倒数）
+
+:link(未被访问时) , :hover(鼠标移动到链接上时) , :active(鼠标点击时) ，:visited(已被访问时)
+
+<video src="video.mp4" width="400px" height="500px" controls></video>
+
+<audio src="audio.mp3" controls></audio>
+
+
+
+//JS
+
+onmouseover 鼠标移到元素
+onmouseout  鼠标移出元素
+onmousedown 鼠标按下
+onmouseup   鼠标松开
+
+下面的例子使用了 Math 对象的 random() 方法来返回一个介于 0 和 1 之间的随机数：
+
+document.write(Math.random())
+
+下面的例子使用了 Math 对象的 floor() 方法和 random() 来返回一个介于 0 和 10 之间的随机数：
+
+document.write(Math.floor(Math.random()*11)) 

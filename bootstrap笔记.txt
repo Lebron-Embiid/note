@@ -1,0 +1,336 @@
+--------------------全局CSS样式
+//布局容器
+.container		固定宽度响应式布局的容器
+.container-fluid	将固定宽度的栅格布局转换为 100% 宽度布局的容器
+
+//栅格系统
+.row	如果在一个.row内包含的列（column）大于12个，包含多余列的元素将作为一个整体单元被另起一行排列。
+
+.col-xs-	超小屏幕 手机（<768px）
+.col-sm-	小屏幕   平板（>=768px）
+.col-md-	中等屏幕 桌面显示器（>=992px）
+.col-lg-	大屏幕   大桌面显示器（>=1200px）
+
+.col-md-offset-*	类可以将列向右偏移。*为偏移的列数。
+
+//改变列的顺序
+.col-md-push-*		将列向后推*格
+.col-md-pull-*		将列向前拉*格
+
+
+//排版
+.small	小号文本  可以用来标记副标题
+.lead	中心内容  可以让段落突出显示
+.text-overflow	  自动截断，在较窄的视口（viewport）内，列表将变为默认堆叠排列的布局方式
+
+//对齐
+.text-left	向左对齐
+.text-center	居中对齐
+.text-right	向右对齐
+.text-justify	两端对齐
+.text-nowrap	文本不换行
+
+//改变大小写
+.text-lowercase		小写
+.text-uppercase 	大写
+.text-capitalize	首字母大写
+
+
+//表格
+.table		类可以为其赋予基本的样式 — 少量的内补（padding）和水平方向的分隔线
+.table-responsive	将任何.table元素包裹在内，即可创建响应式表格
+
+.table-striped	类可以给<tbody>之内的每一行增加斑马条纹样式(依赖:nth-child，IE8不支持)
+.table-bordered	类可以为表格和其中的每个单元格增加边框
+.table-hover	类可以让<tbody>中的每一行对鼠标悬停状态做出响应
+.table-condensed	类可以让表格更加紧凑，单元格中的内补（padding）均会减半
+
+
+//状态类
+.active		鼠标悬停在行或单元格上时所设置的颜色
+.sucess		标识成功或积极的动作
+.info 		标识普通的提示信息或动作
+.warning	标识警告或需要用户注意
+.danger	 	标识危险或潜在的带来负面影响的动作
+
+
+//表单
+向父<form>元素添加role="form"
+.form-group	把标签和控件放在带有.form-group的div中，是获取最佳间距所必需的
+.form-control	默认设置宽度属性为 width:100%
+.help-block	块级帮助文本
+.form-control-static 如果需要在表单中将一行纯文本和 label 元素放置于同一行，为 <p> 元素添加该类即可
+.sr-only	类可以隐藏可见元素
+
+.has-warning	校验警告
+.has-error	校验错误
+.has-success	校验成功
+.has-feedback	为输入框添加额外的图标
+
+.input-lg  .input-md  .input-sm	 类可以为控件设置高度
+.input-group	输入框组
+
+
+//按钮
+.btn		基本样式
+.btn-primary	原始按钮样式
+.btn-default	默认
+.btn-success	表示成功的动作
+.btn-info	可用于弹出信息的按钮
+.btn-warning	表示需要谨慎操作的按钮
+.btn-danger	表示一个危险动作的按钮
+.btn-link	让按钮看起来像一个链接（仍然保留按钮行为）
+
+.btn-lg		大按钮
+.btn-sm		小按钮	
+.btn-xs		超小按钮
+.btn-block	块级按钮（拉伸至父元素100%的宽度）
+.active		按钮被点击
+.disabled	禁用按钮
+
+//响应式图片
+.img-responsive	类可以让图片支持响应式
+.img-rounded	添加border-radius:6px 来获得图片圆角
+.img-circle	添加border-radius:500px 来让整个图片变成圆形
+.img-thumbnail	添加一些内边距和一个灰色边框
+
+
+//辅助类
+.close		<button class="close"><span aria-hidden="true">&times;</span></button> 关闭按钮
+.caret		三角符号
+.pull-left	元素浮动到左边
+.pull-right	元素浮动到右边
+.center-block	元素添加display:block 并居中显示
+.clearfix	清除浮动
+.show		强制元素显示
+.hidden		强制元素隐藏
+.sr-only		除了屏幕阅读器外，其他设备上隐藏元素
+.sr-only-focusable	与.sr-only结合使用，在元素获取焦点时显示
+
+
+//响应式实用工具
+.visible-*-block	display:block;
+.visible-*-inline	display:inline;
+.visible-*-inline-block	display:inline-block;
+
+//打印类
+.hidden-print		浏览器可见，打印机隐藏
+
+.visible-print-block	浏览器隐藏，打印机可见
+.visible-print-inline	
+.visible-print-inline-block
+
+
+--------------------组件类
+//字体图标类	
+.glyphicon .glyphicon-*
+
+@font-face {
+	font-family: "Glyphicons Halflings";
+        src:url("glyphicons-halflings-regular.eot");
+        src:url("glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"),
+            url("glyphicons-halflings-regular.svg") format("svg"),
+            url("glyphicons-halflings-regular.ttf") format("truetype"),
+            url("glyphicons-halflings-regular.woff") format("woff");
+            font-style: normal;
+}
+
+
+//下拉菜单类
+.dropdown		下拉菜单类
+.dropdown-toggle	切换下拉菜单显示隐藏
+.dropdown-menu		上下文菜单
+.dropdown-header	下拉菜单标题
+.dropdown-menu-right	将菜单右对齐
+.divider		分隔线
+
+data-toggle="dropdown"	下拉菜单触发器
+
+
+//按钮类
+.btn-group	基本的按钮组，用来放置一系列带有.btn的按钮
+.btn-toolbar	把一组 <div class="btn-group"> 组合进一个 <div class="btn-toolbar" role="toolbar"> 中就可以做成更复杂的组件
+.btn-group-*	调整按钮组尺寸
+.btn-group-vertical	垂直显示一组按钮
+.btn-*		调整按钮尺寸
+.btn-dropup	向上弹出式菜单
+
+
+//输入框类
+.input-group		输入框组
+.input-group-addon	类可以给.form-control的前面或后面添加额外的元素
+.input-group-*		调整输入框的尺寸
+
+
+//导航类
+.nav		导航基类
+.nav-tabs	任何导航组件，都依赖于.nav基类
+.nav-pills	胶囊式标签页
+.nav-stacked	垂直方向堆叠排列胶囊标签页
+.nav-justified	两端对齐标签页
+
+
+//导航条
+.navbar		导航条
+.navbar-default	默认样式
+.navbar-header	标题
+.navbar-brand	让文本看起来大一号
+.navbar-btn	对于不包含在<form>中的<button>元素，加上该类可以让它在导航条里垂直居中
+.navbar-text	为了有正确的行距和颜色
+.navbar-link 	非导航链接
+.navbar-fixed-top	类可以让导航条固定在顶部
+.navbar-static-top	类可以让导航条静止在顶部，随着页面向下滚动而消失
+.navbar-inverse		反色导航条
+.breadcrumb		路径导航
+.pagination 		分页（&laquo; &raquo;）
+.pager			翻页
+.previous		上一页（&larr;）
+.next			下一页（&rarr;）
+
+role="navigation"	有助于增加可访问性
+
+
+//标签类
+.label		标签
+.label-default
+.label-primary
+.label-success
+.label-danger
+.label-warning
+.label-info	改变标签的外观
+
+//徽章（未读信息条目）
+.badge		展示新的或未读的信息条目
+
+//巨幕
+.jumbotron	巨大屏幕
+
+//页头
+.page-header	页头
+
+//缩略图
+.thumbnail	缩略图（在图像周围添加带有该类的<a>标签）
+.caption	标题、说明
+
+//警告框
+.alert 			警告框
+.alert-success		成功的警告
+.alert-danger		危险的警告
+.alert-warning		谨慎的警告
+.alert-info		信息的警告
+.alert-dismissible	可关闭的警告
+.alert-link		警告框的链接
+
+务必给 <button> 元素添加 data-dismiss="alert" 属性
+
+
+//进度条
+.progress	进度条
+.progress-bar	
+.progress-bar-success
+.progress-bar-danger
+.progress-bar-warning	
+.progress-bar-info
+.progress-bar-striped	条纹效果（IE8不支持）
+.progress-bar-striped active	动画效果（IE9以下不支持）
+
+
+//媒体对象
+.media	媒体
+.media-list
+.media-left
+.media-body
+.media-heading
+
+//列表组
+.list-group	
+.list-group-item
+
+
+//面板
+.panel	
+.panel-body	内容
+.panel-heading	标题容器
+.panel-title	预定义样式的标题
+.panel-footer	脚注
+.panel-default
+.panel-success
+.panel-danger
+.panel-warning
+.panel-primary
+.panel-info
+
+//Well 是一种会引起内容凹陷显示或插图效果的容器
+.well
+.well-lg
+.well-sm
+
+
+--------------------JS插件
+//概览
+$(document).off('.data-api')		关闭data属性API的方法
+$(document).off('.alert.data-api')	针对某个特定的插件
+$.fn.modal.Constructor.DEFAULTS.keyboard = false	默认设置
+var bootstrapButton = $.fn.button.noConflict()		为 $().bootstrapBtn 赋予 Bootstrap 功能
+.preventDefault 		动作开始执行前将其停止
+.noConflict 			添加命名空间
+
+
+//模态框(Modal)
+role="dialog";
+data-toggle="modal";
+data-target="#identifier";(带有 id="id名字")
+.modal-content		模态框内容容器
+.modal-dialog		增加一个样式来调整类实现
+.modal-body		为模态框主体部分增加样式
+.modal-footer		为模态框脚注部分增加样式
+
+
+//下拉菜单(Dropdown)
+data-toggle="dropdown		换下拉菜单
+data-target="#"			需要保持链接完整（在浏览器不启用 JavaScript 时有用）
+$('.dropdown-toggle').dropdown()	调用下拉菜单切换
+$().dropdown('toggle')		显示或隐藏下拉菜单
+
+//滚动监听(Scrollspy)
+data-spy="scroll"	向想要监听的元素（通常是 body）添加
+data-offset="number"	计算滚动位置时，距离顶部的偏移像素
+.scrollspy('refresh')	refresh方法用来更新DOM
+
+//标签页插件(Tab)
+data-toggle="tab"或data-toggle="pill"	启用标签页
+.$().tab();		该方法可以激活标签页元素和内容容器
+
+//提示工具(Tooltip)
+data-toggle="tooltip"	如需添加一个提示工具（tooltip），只需向一个锚标签添加
+$('#identifier').tooltip(options)	通过JS触发提示工具
+
+//弹出框(Popover)
+data-toggle="popover"	如需添加一个弹出框（popover），只需向一个锚/按钮标签添加
+$('#identifier').popover(options)	通过JS启用弹出框
+
+//警告框(Alert)
+data-dismiss="alert"	通过数据 API（Data API）添加可取消功能，只需要向关闭按钮添加,就会自动为警告框添加关闭功能
+$(".alert").alert()	通过 JavaScript 添加可取消功能
+
+//按钮(Button)
+data-loading-text="Loading..."	如需向按钮添加加载状态，只需要简单地向 button 元素添加 
+data-toggle="button"		激活单个按钮的切换（即改变按钮的正常状态为按压状态，反之亦然）
+data-toggle="buttons"		添加复/单选框组的切换
+$('.btn').button()		通过 JavaScript 启用按钮（Button）插件
+
+//折叠(Collapse)
+data-toggle="collapse"		创建可折叠的分组或折叠面板
+data-parent="#accordion"	data-parent 属性把折叠面板（accordion）的 id 添加到要展开或折叠的组件的链接上
+
+//轮播(Carousel)
+.carousel			实现轮播
+.carousel-caption		向幻灯片添加标题
+data-ride="carousel" 		属性用于标记轮播在页面加载时就开始动画播放
+data-slide="prev/next"		改变幻灯片相对于当前位置的位置
+data-slide-to="2"		将把滑块移动到一个特定的索引，索引从 0 开始计数
+$('.carousel').carousel()	轮播（Carousel）可通过 JavaScript 手动调用
+
+//附加导航(Affix)
+data-spy="affix"		如需向元素添加附加导航（Affix）行为，只需要向需要监听的元素添加
+

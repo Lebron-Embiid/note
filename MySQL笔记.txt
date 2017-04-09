@@ -1,0 +1,209 @@
+//mysql 连接
+mysql -u root -p
+退出mysql	exit;
+选择数据库	use 数据库名;
+mysql_connect( db_name, connection );	PHP连接sql
+mysql_select_db( db_name, connection );	PHP选择sql
+mysql_query( sql, connection );		PHP查询，插入，删除sql
+
+查询数据库表状态:SHOW TABLE STATUS;
+
+//mysql 创建数据表
+create table 表名( )
+NOT NULL - 没一行都必须含有值（不能为空），null 值是不允许的。
+DEFAULT value - 设置默认值
+UNSIGNED - 使用无符号数值类型，0 及正数
+AUTO INCREMENT - 设置 MySQL 字段的值在新增记录时每次自动增长 1
+PRIMARY KEY - 设置数据表中每条记录的唯一标识。 通常列的 PRIMARY KEY 设置为 ID 数值，与AUTO_INCREMENT 一起使用
+
+查询数据库列:SHOW COLUMNS FROM table_name;
+
+插入数据：
+INSERT INTO table_name (column1, column2, column3,...) VALUES (value1, value2, value3,...)
+
+查询表/读取表数据：
+SELECT column1,column2,column3,…… FROM table_name;
+
+创建/删除数据库/数据表：
+CREATE/DROP DATABASE 数据库名;
+CREATE/DROP TABLE 数据表名;
+
+删除表数据：
+DELETE FROM table_name where column* = value*;
+
+修改表数据：
+UPDATE table_name SET column1=value, column2=value2,...  WHERE column* = value*;
+
+MySQL LIKE子句
+SELECT field1, field2,...fieldN table_name1, table_name2...WHERE field1 LIKE condition1 [AND [OR]] filed2 = 'somevalue'
+你可以使用LIKE子句代替等号(=)。
+LIKE 通常与 % 一同使用，类似于一个元字符的搜索。
+你可以使用AND或者OR指定一个或多个条件。
+你可以在 DELETE 或 UPDATE 命令中使用 WHERE...LIKE 子句来指定条件。
+
+排序
+SELECT field1, field2,...fieldN table_name1, table_name2...ORDER BY field1, [field2...] [ASC [DESC]]
+ORDER BY 关键词用于对记录集中的数据进行排序。
+ORDER BY 关键词默认对记录进行升序排序
+ASC|DESC	升序|降序
+DESC table_name;  //查询表结构
+
+MySQL 分组
+GROUP BY 语句根据一个或多个列对结果集进行分组。在分组的列上我们可以使用 COUNT, SUM, AVG,等函数。
+SELECT name, COUNT(*) FROM table_name GROUP BY name;
+
+WITH ROLLUP 可以实现在分组统计数据基础上再进行相同的统计（SUM,AVG,COUNT…）
+SELECT name,count(*) FROM table_name GROUP BY name WITH ROLLUP
+
+
+//可以取代null的名称
+select coalesce(a,b,c);
+SELECT coalesce(name, '总数')
+
+MySQL 连接的使用
+INNER JOIN（内连接,或等值连接）：获取两个表中字段匹配关系的记录。
+LEFT JOIN（左连接）：获取左表所有记录，即使右表没有对应匹配的记录。
+RIGHT JOIN（右连接）： 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。
+SELECT table1_value, table2_value FROM table_name1 INNER JOIN table_name2 ON table1_value = table2_value;
+等价于
+SELECT table1_value, table2_value FROM table_name1,table_name2 WHERE table1_value = table2_value;
+
+
+MySQL NULL 值处理
+IS NULL:	当列的值是NULL,此运算符返回true
+IS NOT NULL:	当列的值不为NULL,运算符返回true
+<=>: 比较操作符（不同于=运算符），当比较的的两个值为NULL时返回true
+
+//MySQL 正则表达式
+^		匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 '\n' 或 '\r' 之后的位置。
+$		匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 '\n' 或 '\r' 之前的位置。
+.		匹配除 "\n" 之外的任何单个字符。要匹配包括 '\n' 在内的任何字符，请使用象 '[.\n]' 的模式。
+[...]		字符集合。匹配所包含的任意一个字符。例如， '[abc]' 可以匹配 "plain" 中的 'a'。
+[^...]		负值字符集合。匹配未包含的任意字符。例如， '[^abc]' 可以匹配 "plain" 中的'p'。
+p1|p2|p3	匹配 p1 或 p2 或 p3。例如，'z|food' 能匹配 "z" 或 "food"。'(z|f)ood' 则匹配 "zood" 或 "food"。
+*		匹配前面的子表达式零次或多次。例如，zo* 能匹配 "z" 以及 "zoo"。* 等价于{0,}。
++		匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 "zo" 以及 "zoo"，但不能匹配 "z"。+ 等价于 {1,}。
+{n}		n 是一个非负整数。匹配确定的 n 次。例如，'o{2}' 不能匹配 "Bob" 中的 'o'，但是能匹配 "food" 中的两个 o。
+{n,m}		m 和 n 均为非负整数，其中n <= m。最少匹配 n 次且最多匹配 m 次。
+
+SELECT name FROM table_name1 WHERE name REGEXP '^[aeiou]|ok$';
+
+
+//ALTER 命令
+ALTER TABLE table_name DROP i;  	删除创建表的i字段(表中只剩余一个字段则无法使用DROP来删除字段)
+ALTER TABLE table_name ADD i INT(2);	i 字段会自动添加到数据表字段的末尾
+
+ALTER 命令中使用 MODIFY 或 CHANGE 子句修改字段类型及名称
+ALTER TABLE table_name MODIFY i CHAR(10);
+ALTER TABLE table_name CHANGE j j INT(2);
+使用 CHANGE 子句, 语法有很大的不同。 在 CHANGE 关键字之后，紧跟着的是你要修改的字段名，然后指定新字段的类型及名称。
+
+修改/删除字段默认值:
+ALTER TABLE table_name ALTER i SET DEFAULT 1000;
+ALTER TABLE table_name ALTER i DROP DEFAULT;
+
+修改表名:
+ALTER TABLE table_name RENAME TO alter_tbl;
+
+
+//MySQL 索引
+创建索引:
+CREATE INDEX indexName ON mytable(username(length));
+修改表结构:
+ALTER mytable ADD INDEX [indexName] ON (username(length));
+删除索引:
+DROP INDEX [indexName] ON mytable; 
+创建表的时候直接指定:
+INDEX [indexName] (username(length))  
+
+唯一索引
+创建索引:
+CREATE UNIQUE INDEX indexName ON mytable(username(length)) 
+修改表结构:
+ALTER mytable ADD UNIQUE [indexName] ON (username(length)) 
+创建表的时候直接指定:
+UNIQUE [indexName] (username(length))  
+
+使用ALTER 命令添加和删除索引
+有四种方式来添加数据表的索引：
+ALTER TABLE tbl_name ADD PRIMARY KEY (column_list): 该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。
+ALTER TABLE tbl_name ADD UNIQUE index_name (column_list): 这条语句创建索引的值必须是唯一的（除了NULL外，NULL可能会出现多次）。
+ALTER TABLE tbl_name ADD INDEX index_name (column_list): 添加普通索引，索引值可出现多次。
+ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):该语句指定了索引为 FULLTEXT ，用于全文索引。
+
+使用 ALTER 命令添加和删除主键
+ALTER TABLE testalter_tbl MODIFY i INT NOT NULL;
+ALTER TABLE testalter_tbl ADD PRIMARY KEY (i);
+使用 ALTER 命令删除主键：
+ALTER TABLE testalter_tbl DROP PRIMARY KEY;
+你可以使用 SHOW INDEX 命令来列出表中的相关的索引信息。可以通过添加 \G 来格式化输出信息。
+SHOW INDEX FROM table_name\G
+
+//MySQL 临时表
+CREATE TEMPORARY TABLE table_name;	创建临时表
+
+MySQL 复制表
+SHOW CREATE TABLE table_name \G;
+INSERT INTO... SELECT	
+
+获取服务器元数据
+SELECT VERSION( )	服务器版本信息
+SELECT DATABASE( )	当前数据库名 (或者返回空)
+SELECT USER( )	当前用户名
+SHOW STATUS	服务器状态
+SHOW VARIABLES	服务器配置变量
+
+序列
+AUTO_INCREMENT	可实现自动增长
+PHP 通过 mysql_insert_id ()函数来获取执行的插入SQL语句中 AUTO_INCREMENT列的值
+
+重置序列
+ALTER TABLE insect DROP id;
+ALTER TABLE insect
+ADD id INT UNSIGNED NOT NULL AUTO_INCREMENT FIRST,
+ADD PRIMARY KEY (id);
+
+重复数据
+INSERT IGNORE INTO
+REPLACE INTO into
+
+查询重复记录
+select user_name,count(*) as count from user_table group by user_name having count(user_name)>1;
+
+统计重复数据
+SELECT COUNT(*) as repetitions, last_name, first_name
+    -> FROM person_tbl
+    -> GROUP BY last_name, first_name
+    -> HAVING repetitions > 1;
+
+过滤重复数据
+mysql> SELECT DISTINCT last_name, first_name
+    -> FROM person_tbl
+    -> ORDER BY last_name;
+
+删除重复数据
+CREATE TABLE tmp SELECT last_name,first_name,sex FROM person_tbl GROUP BY (last_name, first_name);
+DROP TABLE person_tbl;
+ALTER TABLE tmp RENAME TO person_tbl;
+
+
+addcslashes(string,characters) 函数在指定的字符前添加反斜杠
+string	必需。规定要检查的字符串。
+characters	可选。规定受 addcslashes() 影响的字符或字符范围。
+
+SELECT * FROM user_table INTO OUTFILE 'php.txt'	 语句来简单的导出数据到文本文件上。
+LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE user_table ;	使用 LOAD DATA 导入数据
+
+
+
+
+
+
+
+
+
+
+
+
+
+

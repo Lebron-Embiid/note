@@ -1,0 +1,614 @@
+//PHP: Hypertext Preprocessor（超文本预处理器）
+
+PHP 文件可包含文本、HTML、JavaScript代码和 PHP 代码
+PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器
+PHP 文件的默认文件扩展名是 ".php"
+
+PHP 可以生成动态页面内容
+PHP 可以创建、打开、读取、写入、关闭服务器上的文件
+PHP 可以收集表单数据
+PHP 可以发送和接收 cookies
+PHP 可以添加、删除、修改您的数据库中的数据
+PHP 可以限制用户访问您的网站上的一些页面
+PHP 可以加密数据
+
+
+//php语法
+PHP 脚本可以放在文档中的任何位置
+PHP 脚本以 <?php 开始，以 ?> 结束
+<?php
+ // PHP 代码
+ ?> 
+
+// 这是 PHP 单行注释
+
+/*
+这是 
+PHP 多行
+注释
+*/
+
+
+//php变量
+变量以 $ 符号开始，后面跟着变量的名称
+变量名必须以字母或者下划线字符开始
+变量名只能包含字母数字字符以及下划线（A-z、0-9 和 _ ）
+变量名是区分大小写的（$y 和 $Y 是两个不同的变量）
+
+php四种不同的变量作用域
+local	
+global	在函数内调用函数外定义的全局变量，我们需要在函数中的变量前加上 global 关键字
+static	希望某个局部变量不要被删除，第一次声明变量时使用 static 关键字
+parameter	
+PHP 将所有全局变量存储在一个名为 $GLOBALS[index] 的数组中，index 保存变量的名称。
+
+
+//php输出语句
+echo      可以输出一个或多个字符串。使用时可以加()也可以不加
+print     只能输出简单类型变量的值,如int,string。使用时可以加()也可以不加
+print_r   可以输出复杂类型变量的值,如数组,对象。使用时必须加()
+
+var_dump() 函数返回变量的数据类型和值
+
+
+//php常量
+define(nstant_name,value,case_sensitive) //define("name","lebron");
+const name = 1;		定义常量方法之一
+
+define与const的区别：
+(1).const用于类成员变量的定义，一经定义，不可修改。define不可用于类成员变量的定义，可用于全局常量。
+
+(2).const可在类中使用，define不能。
+
+(3).const不能在条件语句中定义常量
+
+(4).const采用一个普通的常量名称，define可以采用表达式作为名称
+
+(5).const只能接受静态的标量，而define可以采用任何表达式。
+
+(6).const定义的常量时大小写敏感的，而define可通过第三个参数（为true表示大小写不敏感）来指定大小写是否敏感。
+
+
+
+nstant_name：必选参数，常量名称，即标志符。
+value：必选参数，常量的值。
+case_sensitive：可选参数，指定是否大小写敏感，设定为 true 表示不敏感。
+
+FILE :php程序文件名
+LINE :PHP程序文件行数
+PHP_VERSION:当前解析器的版本号
+PHP_OS：执行当前PHP版本的操作系统名称
+
+
+//php字符串变量
+并置运算符 (.)  用于把两个字符串值连接起来
+strlen() 	函数返回字符串的长度(字符数)
+strpos() 	函数用于在字符串内查找一个字符或一段指定的文本,如果未找到匹配，则返回 FALSE
+
+
+//php数组
+var $arr = array();
+
+在 PHP 中，有三种类型的数组：
+数值数组 - 带有数字 ID 键的数组
+关联数组 - 带有指定的键的数组，每个键关联一个值("name"=>"value")
+多维数组 - 包含一个或多个数组的数组
+
+count()    函数用于返回数组的长度（元素的数量）
+
+//数组排序
+sort() - 对数组进行升序排列
+rsort() - 对数组进行降序排列
+asort() - 根据关联数组的值，对数组进行升序排列
+ksort() - 根据关联数组的键，对数组进行升序排列
+arsort() - 根据关联数组的值，对数组进行降序排列
+krsort() - 根据关联数组的键，对数组进行降序排列
+
+
+//php超级全局变量
+.$GOBALS 	所有全局变量数组
+.$_SERVER 	服务器环境变量数组
+.$_POST 	通过POST方法传递给该脚本的变量数组。$_POST 被广泛应用于收集表单数据
+.$_GET 		通过GET方法传递给该脚本的变量数组。$_GET 广泛应用于收集表单数据
+.$_COOKIE 	cookie变量数组
+.$_FILES 	与文件上传相关的变量数组
+.$_ENV 		环境变量数组
+.$_REQUEST 	所有用户输入的变量数组包括$_GET $_POST $_COOKIE 所包含的输入内容，$_REQUEST 用于收集HTML表单提交的数据
+.$_SESSION 	会话变量数组 
+
+$_SERVER 变量中的重要元素：
+$_SERVER['PHP_SELF']		当前执行脚本的文件名，与 document root 有关。例如，在地址为 http://example.com/test.php/foo.bar 的脚本中使用 $_SERVER['PHP_SELF'] 将得到 /test.php/foo.bar。__FILE__ 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。
+$_SERVER['GATEWAY_INTERFACE']	服务器使用的 CGI 规范的版本；例如，"CGI/1.1"。
+$_SERVER['SERVER_ADDR']		当前运行脚本所在的服务器的 IP 地址。
+$_SERVER['SERVER_NAME']		当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: www.w3cschool.cn)
+$_SERVER['SERVER_SOFTWARE']	服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache/2.2.24)
+$_SERVER['SERVER_PROTOCOL']	请求页面时通信协议的名称和版本。例如，"HTTP/1.0"。
+$_SERVER['REQUEST_METHOD']	访问页面使用的请求方法；例如，"GET", "HEAD"，"POST"，"PUT"。
+$_SERVER['REQUEST_TIME']	请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)
+$_SERVER['QUERY_STRING']	query string（查询字符串），如果有的话，通过它进行页面访问。
+$_SERVER['HTTP_ACCEPT']		当前请求头中 Accept: 项的内容，如果存在的话。
+$_SERVER['HTTP_ACCEPT_CHARSET']	当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如："iso-8859-1,*,utf-8"。
+$_SERVER['HTTP_HOST']		当前请求头中 Host: 项的内容，如果存在的话。
+$_SERVER['HTTP_REFERER']	引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)
+$_SERVER['HTTPS']		如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。
+$_SERVER['REMOTE_ADDR']		浏览当前页面的用户的 IP 地址。
+$_SERVER['REMOTE_HOST']		浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。
+$_SERVER['REMOTE_PORT']		用户机器上连接到 Web 服务器所使用的端口号。
+$_SERVER['SCRIPT_FILENAME']	当前执行脚本的绝对路径。
+$_SERVER['SERVER_ADMIN']	该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：someone@w3cschool.cn)
+$_SERVER['SERVER_PORT']		Web 服务器使用的端口。默认值为 "80"。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。
+$_SERVER['SERVER_SIGNATURE']	包含了服务器版本和虚拟主机名的字符串。
+$_SERVER['PATH_TRANSLATED']	当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。
+$_SERVER['SCRIPT_NAME']		包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE__ 常量包含当前脚本(例如包含文件)的完整路径和文件名。
+$_SERVER['SCRIPT_URI']		URI 用来指定要访问的页面。例如 "/index.html"。
+
+
+//php魔术变量（预定义常量）
+__LINE__	文件中的当前行号
+__FILE__	文件的完整路径和文件名
+__DIR__		文件所在的目录
+__FUNCTION__	函数名称（区分大小写）
+__CLASS__	类的名称（区分大小写）
+__TRAIT__	Trait 的名字
+__METHOD__	类的方法名（区分大小写）
+__NAMESPACE__	当前命名空间的名称（区分大小写）
+
+
+//php命名空间
+declare(encoding='UTF-8')	定义源文件编码方式
+PHP 命名空间(namespace)
+
+
+//表单验证
+$_SERVER["PHP_SELF"]是超级全局变量，返回当前正在执行脚本的文件名，与 document root相关。
+所以， $_SERVER["PHP_SELF"] 会发送表单数据到当前页面，而不是跳转到不同的页面
+htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体。
+& （和号） 成为 &amp;
+" （双引号） 成为 &quot;
+' （单引号） 成为 &#039;
+< （小于） 成为 &lt;
+> （大于） 成为 &gt;
+
+$_GET 变量
+
+预定义的 $_GET 变量用于收集来自 method="get" 的表单中的值。
+从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），并且对发送信息的量也有限制
+
+$_POST 变量
+
+预定义的 $_POST 变量用于收集来自 method="post" 的表单中的值。
+从带有 POST 方法的表单发送的信息，对任何人都是不可见的（不会显示在浏览器的地址栏），并且对发送信息的量也没有限制
+
+PHP $_REQUEST 变量
+
+预定义的 $_REQUEST 变量包含了 $_GET、$_POST 和 $_COOKIE 的内容。
+$_REQUEST 变量可用来收集通过 GET 和 POST 方法发送的表单数据
+
+
+//php多维数组
+多维数组是包含一个或多个数组的数组。
+在多维数组中，主数组中的每一个元素也可以是一个数组，子数组中的每一个元素也可以是一个数组
+<?php
+// A two-dimensional array:
+$cars = array
+(
+"Griffin"=>array("Volvo",100,96),
+"Lebron"=>array("BMW",60,59),
+"James"=>array("Toyota",110,100)
+);
+?>
+
+//php日期
+PHP date() 函数可把时间戳格式化为可读性更好的日期和时间
+date() 函数的第一个必需参数 format 规定了如何格式化日期/时间。
+这里列出了一些可用的字符：
+d - 代表月中的天 (01 - 31)
+m - 代表月 (01 - 12)
+Y - 代表年 (四位数)
+
+mktime() 添加时间戳 语法
+
+mktime(hour,minute,second,month,day,year,is_dst)
+如需获得某一天的时间戳，我们只要设置 mktime() 函数的 day 参数就可以了
+<?php
+ $tomorrow = mktime(0,0,0,date("m"),date("d")+1,date("Y"));
+ echo "Tomorrow is ".date("Y/m/d", $tomorrow);
+ ?>
+
+
+//php包含
+include 和 require 除了处理错误的方式不同之外，在其他方面都是相同的：
+require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行。
+include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行
+
+fopen() 函数用于在 PHP 中打开文件，如果 fopen() 函数无法打开指定文件，则返回 0 (false)
+r	只读。在文件的开头开始。
+r+	读/写。在文件的开头开始。
+w	只写。打开并清空文件的内容；如果文件不存在，则创建新文件。
+w+	读/写。打开并清空文件的内容；如果文件不存在，则创建新文件。
+a	追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。
+a+	读/追加。通过向文件末尾写内容，来保持文件内容。
+x	只写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。
+x+	读/写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。
+
+fclose() 函数用于关闭打开的文件
+feof() 	函数检测是否已到达文件末尾（EOF）  //if (feof($file)) echo "End of file";
+fgets() 函数用于从文件中逐行读取文件，在调用该函数之后，文件指针会移动到下一行
+fgetc() 函数用于从文件中逐字符地读取文件
+
+
+//php文件上传
+使用 PHP 的全局数组 $_FILES，你可以从客户计算机向远程服务器上传文件。
+第一个参数是表单的 input name，第二个下标可以是 "name"、"type"、"size"、"tmp_name" 或 "error"。如下所示：
+$_FILES["file"]["name"] - 被上传文件的名称
+$_FILES["file"]["type"] - 被上传文件的类型
+$_FILES["file"]["size"] - 被上传文件的大小，以字节计
+$_FILES["file"]["tmp_name"] - 存储在服务器的文件的临时副本的名称
+$_FILES["file"]["error"] - 由文件上传导致的错误代码
+
+
+//php Cookie
+setcookie() 函数用于设置 cookie，setcookie() 函数必须位于 <html> 标签之前
+setcookie(name, value, expire, path, domain)
+$expire=time()+60*60*24*30;过期时间被设置为一个月（60 秒 * 60 分 * 24 小时 * 30 天）
+
+$_COOKIE 变量用于取回 cookie 的值（$_COOKIE["user"]）
+setcookie("user", "", time()-3600)	删除cookie
+
+
+//php Sessions
+session_start()		开始 PHP Session
+$_SESSION['views']=1; 	$_SESSION['views']		存储/取回 Session 变量
+unset() 或 session_destroy() 	删除某些 session 数据
+unset() 函数用于释放指定的 session 变量
+session_destroy() 函数彻底销毁 session
+session_destroy() 将重置 session，您将失去所有已存储的 session 数据
+
+
+//php E-Mail
+PHP mail() 函数用于从脚本中发送电子邮件
+mail(to,subject,message,headers,parameters)
+to		必需。规定 email 接收者。
+subject		必需。规定 email 的主题。注释：该参数不能包含任何新行字符。
+message		必需。定义要发送的消息。应使用 LF (\n) 来分隔各行。每行应该限制在 70 个字符内。
+headers		可选。规定附加的标题，比如 From、Cc 和 Bcc。应当使用 CRLF (\r\n) 分隔附加的标题。
+parameters	可选。对邮件发送程序规定额外的参数。
+
+FILTER_SANITIZE_EMAIL 过滤器从字符串中删除电子邮件的非法字符
+FILTER_VALIDATE_EMAIL 过滤器验证电子邮件地址的值
+
+//php 错误处理
+die() 函数	基本的错误处理
+
+创建自定义错误处理器：error_function(error_level,error_message,error_file,error_line,error_context) 
+error_level	必需。为用户定义的错误规定错误报告级别。必须是一个数字。参见下面的表格：错误报告级别。
+error_message	必需。为用户定义的错误规定错误消息。
+error_file	可选。规定错误发生的文件名。
+error_line	可选。规定错误发生的行号。
+error_context	可选。规定一个数组，包含了当错误发生时在用的每个变量以及它们的值。
+
+设置错误处理程序：set_error_handler("customError")仅需要一个参数，可以添加第二个参数来规定错误级别
+触发错误：trigger_error() 函数完成
+E_USER_ERROR - 致命的用户生成的 run-time 错误。错误无法恢复。脚本执行被中断。
+E_USER_WARNING - 非致命的用户生成的 run-time 警告。脚本执行不被中断。
+E_USER_NOTICE - 默认。用户生成的 run-time 通知。在脚本发现可能有错误时发生，但也可能在脚本正常运行时发生。
+error_log() 函数，您可以向指定的文件或远程目的地发送错误记录
+
+
+//php 异常处理
+Try - 使用异常的函数应该位于 "try" 代码块内。如果没有触发异常，则代码将照常继续执行。但是如果异常被触发，会抛出一个异常。
+Throw - 里规定如何触发异常。每一个 "throw" 必须对应至少一个 "catch"。
+Catch - "catch" 代码块会捕获异常，并创建一个包含异常信息的对象。
+
+//php 过滤器
+filter_var()		- 通过一个指定的过滤器来过滤单一的变量
+filter_var_array() 	- 通过相同的或不同的过滤器来过滤多个变量
+filter_input 		- 获取一个输入变量，并对它进行过滤
+filter_input_array 	- 获取多个输入变量，并通过相同的或不同的过滤器对它们进行过滤
+
+高级过滤器：filter_var() 函数
+
+//php json
+json_encode	对变量进行 JSON 编码
+json_decode	对 JSON 格式的字符串进行解码，转换为 PHP 变量
+json_last_error	返回最后发生的错误
+string json_encode ( $value [, $options = 0 ] )
+value: 要编码的值。该函数只对 UTF-8 编码的数据有效。
+options:由以下常量组成的二进制掩码：JSON_HEX_QUOT, JSON_HEX_TAG, JSON_HEX_AMP, JSON_HEX_APOS, JSON_NUMERIC_CHECK,JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES, JSON_FORCE_OBJECT
+
+json_decode() 函数用于对 JSON 格式的字符串进行解码，并转换为 PHP 变量
+mixed json_decode ($json [,$assoc = false [, $depth = 512 [, $options = 0 ]]])
+json_string: 待解码的 JSON 字符串，必须是 UTF-8 编码数据
+assoc: 当该参数为 TRUE 时，将返回数组，FALSE 时返回对象。
+depth: 整数类型的参数，它指定递归深度
+options: 二进制掩码，目前只支持 JSON_BIGINT_AS_STRING 。
+
+
+//php mysql
+使用以下方式连接 MySQL :
+MySQLi extension ("i" 意为 improved)
+PDO (PHP Data Objects)
+PDO 应用在 12 种不同数据库中， MySQLi 只针对 MySQL 数据库
+如果你的项目需要在多种数据库中切换，建议使用 PDO。两者都是面向对象, 但 MySQLi 还提供了 API 接口。
+
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// 创建连接
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+检测连接：
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+关闭链接：
+$conn->close();		(MySQLi - 面向对象)
+mysqli_close($conn);	(MySQLi - 面向过程)
+$conn = null;		(PDO)
+
+//mysql 创建数据表
+create table 表名( )
+NOT NULL - 没一行都必须含有值（不能为空），null 值是不允许的。
+DEFAULT value - 设置默认值
+UNSIGNED - 使用无符号数值类型，0 及正数
+AUTO INCREMENT - 设置 MySQL 字段的值在新增记录时每次自动增长 1
+PRIMARY KEY - 设置数据表中每条记录的唯一标识。 通常列的 PRIMARY KEY 设置为 ID 数值，与AUTO_INCREMENT 一起使用
+
+插入数据：
+INSERT INTO table_name (column1, column2, column3,...) VALUES (value1, value2, value3,...)
+
+查询表/读取表数据：
+SELECT column1,column2,column3,…… FROM table_name;
+
+删除数据库/数据表：
+DROP DATABASE 数据库名;
+DROP TABLE 数据表名;
+
+删除表数据：
+DELETE FROM table_name where column* = value*;
+
+修改表数据：
+UPDATE table_name SET column1=value, column2=value2,...  WHERE column* = value*;
+
+//排序
+ORDER BY 关键词用于对记录集中的数据进行排序。
+ORDER BY 关键词默认对记录进行升序排序
+ASC|DESC	升序|降序
+
+
+
+
+
+-------------------------------------------------------------------------------------------
+
+视频笔记
+
+phpinfo()	查询php版本
+
+单双引号的区别:
+1.单引号不能解析变量
+2.双引号可以解析变量
+
+php变量类型：
+1.整型 2.浮点型 3.字符串型 4.布尔型 5.数组 6.对象 7.资源 8.null
+
+php变量输出:	
+1.echo		打印布尔类型的值(true->1   false->空)
+2.var_dump()	输出并打印变量类型
+3.print_r()	打印数组		
+4.printf()	格式化输出并打印
+5.sprintf()	只返回不打印
+
+测试php变量:
+isset()	
+变量不存在的情况:
+未定义
+null
+
+empty()	
+返回为空的情况:
+$a=null;
+$a='';
+$a='0';
+$a=false;
+$a=array();
+$a=0;
+$a=0.0;
+
+获取类型结果(string):
+gettype()	
+
+精确判断类型(bool):
+is_int()	
+is_string()
+is_array()
+is_object()
+is_null()
+is_resource()
+is_bool()
+
+
+变量类型自动转换
+1.整型->字符串
+$a=10;
+echo $a.'abc';
+
+2.字符串->整型
+$a='10abc';
+echo $a+10;
+
+3.所有类型->布尔型（为假）
+$a=null;
+$a='';
+$a='0';
+$a=false;
+$a=array();
+$a=0;
+$a=0.0;
+
+变量类型强制转换
+(int)
+(string)
+(bool)
+(float)
+(array)
+(object)
+
+常量的定义和使用:
+1.定义
+define('HOST','localhost');
+
+defined('HOST')	判断常量是否存在
+
+2.输出
+echo HOST;
+echo "my name is .'HOST'.!!!";
+
+预定义常量:
+__FILE__	当前文件绝对路径
+__LINE__	当前光标所在处
+__FUNCTION__	当前函数名
+M_PI		圆周率
+
+
+break		结束整个循环
+continue	结束本次循环
+exit		结束整个页面脚本
+die		结束整个页面脚本
+
+
+变量的作用域:
+1.局部变量
+函数里面的变量
+
+2.全局变量
+函数外面的变量
+
+3.连接局部和全局
+global $i;
+
+4.超全局变量
+(1)常量
+(2)预定义常量
+(3)超全局数组
+
+5.静态变量（函数内同一个变量在同名函数调用多次的情况下能够连续使用）
+static $i;
+
+
+超全局数组:
+1.$_SERVER
+2.$_GET		（超链接、表单GET请求）
+3.$_POST	（表单POST请求）
+4.$_REQUEST	同时可以接收$_GET和$_POST数据，但效率较低
+5.$_FILES
+6.$_COOKIE
+7.$_SESSION
+8.$GLOBALS
+
+$_GET数组:
+(1)http://localhost/index.php?id=1&name=lebron&age=32
+(2)$_GET专门用来接收地址栏中的参数
+
+$_SERVER数组:
+['SERVER_NAME']	服务器域名
+['REMOTE_ADDR']	客户端IP
+['SERVER_ADDR']	服务器IP
+['SERVER_PORT']	服务器端口
+['DOCUMENT_ROOT'] 网站根目录
+['SCRIPT_FILENAME'] 当前脚本的系统绝对路径
+['REQUEST_URI']	当前脚本的网站绝对路径
+['PHP_SELF']	当前脚本的网站绝对路径
+
+$GLOBALS数组:
+1.包含$_GET数据
+2.包含$_POST数据
+3.包含$_COOKIE数据
+4.包含$_FILES数据
+
+
+表单数据如何提交给PHP文件:(一定要有name,php才能接收到数据)
+1.text数据
+<input type="text" name="username">
+
+2.password数据
+<input type="password" name="password">
+
+3.radio单选数据
+<label>
+   <input type="radio" name="project" value="HTML">HTML
+</label>
+
+4.checkbox多选数据
+<label>
+   <input type="checkbox" name="love[]" value="HTML5">HTML5
+</label>
+<label>
+   <input type="checkbox" name="love[]" value="CSS3">CSS3
+</label>
+
+5.select下拉数据
+<select name="city" id="">
+   <option value="bj">北京</option>
+   <option value="sh">上海</option>
+   <option value="wh">武汉</option>
+</select>
+
+6.多选下拉菜单数据
+<select name="interests[]" id="" multiple size="5">
+   <option value="basketball">篮球</option>
+   <option value="music">音乐</option>
+   <option value="eat">吃</option>
+</select>
+
+7.textarea文本域数据
+<textarea name="mess" id="" cols="30" rows="10"></textarea>
+
+
+数组键值操作函数：
+array_values()	获取数组中的值
+array_keys()	获取数组中的键
+in_array()	检查一个值是否在数组中
+array_key_exists()	检查一个键是否在数组中
+array_flip()	键和值对调
+array_reverse()	数组中的值反转
+
+统计数组的元素和唯一性:
+count()			统计数组的个数
+array_count_values()	统计数组值出现的次数
+array_unique()		删除数组中重复值
+
+使用回调参数处理数组的函数:
+array_filter()	数组值过滤（默认过滤值为假的情况）
+array_map()	将回调函数作用到给定数组的单元上
+
+数组的排序函数:(都会改变原数组)
+sort()	按值排序，升序，不保留key
+rsort()	按值排序，降序，不保留key
+asort()	按值排序，升序，保留key
+arsort()按值排序，降序，保留key
+ksort()	按键排序，升序，保留key
+krsort()按键排序，降序，保留key
+natsort()按自然数排序（字符串排序）
+natcasesort()忽略大小写的自然数排序
+array_multisort()用一个数组对另外一个数组进行排序
+
+与HTML标签相关联的字符串函数:
+nl2br()			
+htmlspecialchars()	转实体（'<'转成&lt; '>'转成&gt;）
+htmlspecialchars_decode() 解实体
+strip_tags()		
+addslashes()		加反斜线，转义
+stripslashes()		去反斜线
+
+
+
+
+
+
+
+
+
+
